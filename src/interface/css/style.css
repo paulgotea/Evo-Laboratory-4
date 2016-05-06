@@ -1,0 +1,250 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.col-centered {
+	margin: auto;
+	float: none;
+}
+body, html {
+    width: 100%;
+    height: 100%;
+}
+body {
+	font-family: 'Open Sans', sans-serif;
+	color: #fff;
+}
+
+header nav.navbar {
+    border: 0;
+    padding: 10px 0 10px 0;
+    margin-bottom: 70px;
+}
+header nav.navbar-dark {
+    color: #fff ;
+    background-color: #2a343d;
+}
+header nav.navbar a.navbar-brand {
+    color: #96c759;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+header nav.navbar #navbar ul.nav li a {
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 15px;
+    padding-bottom: 12px;
+    text-transform: uppercase;
+}
+header nav.navbar #navbar ul.nav li a:hover, header nav.navbar #navbar ul.nav a.active {
+    border-bottom: 3px solid #96c759 !important;
+}
+
+.navbar-dark ul.nav li a {
+    color: #fff
+}
+.navbar-dark ul.nav li a:hover, .navbar-dark ul.nav li a:active {
+    color: #96c759;
+}
+
+section.wrapper {
+    color: #2b353e;
+    padding: 70px 0 40px 0;
+}
+section.wrapper#user-sign {
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    background: url('../img/bg.jpg') no-repeat fixed;
+    background-size: cover;
+}
+section.wrapper#user-sign h1 {
+    font-size: 30px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-top: 40px;
+}
+section.wrapper#user-sign form {
+    margin-top: 40px;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+section.wrapper#user-sign form input {
+    border-radius: 0;
+    padding: 20px 20px 20px 20px;
+    border: 0;
+    margin-bottom: 20px;
+}
+section.wrapper#user-sign form button[type="submit"] {
+    border-radius: 0;
+    border: 0;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 16px;
+    color: fff;
+    background-color: #96c759;
+}
+section.wrapper .content {
+    margin-top: 60px;
+}
+section.wrapper .content h1 {
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+section.wrapper .content .quizContainer .quiz {
+    margin-top: 35px;
+    padding: 20px 0 30px 0;
+    border-top: 1px solid #d6dde3;
+}
+section.wrapper .content .quizContainer .quiz h2 {
+    font-size: 27px;
+    font-weight: 300;
+}
+section.wrapper .content .quizContainer .quiz p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+section.wrapper .content .quizContainer .quiz span {
+    font-size: 15px;
+    margin-top: 12px;
+    float: left;
+}
+section.wrapper .content .quizContainer .quiz span strong {
+    color: #d9534f;
+}
+section.wrapper .content .quizContainer .quiz button[type="submit"] {
+    font-size: 10px;
+    text-transform: uppercase;
+    float: right;
+}
+section.wrapper .content .createActionContainer .createAction {
+    margin-top: 30px;   
+    padding-top: 30px;
+    border-top: 1px solid #d6dde3;
+    display: none;
+}
+.addQuizQuestion,
+.customCheck {
+    float: right;
+}
+.addQuizQuestion label,
+.customCheck label {
+    color: #fff !important;;
+    position: absolute !important;
+    right: 26px !important;
+    margin-top: 23px !important;
+    font-size: 11px !important;;
+    pointer-events: none !important;
+}
+.addQuizQuestion input[type=checkbox],
+.customCheck input {
+    width: 105px !important;
+    height: 35px !important;
+    line-height: 1.3333333 !important;
+    font-size: 10px !important;
+    text-transform: uppercase !important;
+    border-radius: 6px !important;
+    -webkit-appearance: none !important;
+    border: none;
+    outline: none;
+}
+.addQuizQuestion input[type=checkbox]:checked,
+.customCheck input:checked {
+    background-color: #d9534f;
+    outline: none;
+}
+section.wrapper .content .solveQuiz .question {
+    padding: 30px 0 30px 0;
+    border-bottom: 1px solid #d6dde3;
+}
+section.wrapper .content .solveQuiz strong.showpoints {
+    font-size: 16px;
+    float: right;
+}
+section.wrapper .content .solveQuiz .question .answer {
+    border-bottom: 1px dashed #d6dde3;
+    padding-bottom: 15px;
+}
+section.wrapper .content .solveQuiz .question .answer span {
+    font-size: 17px;
+    font-weight: 300;
+    position: relative;
+    top: 20px;
+}
+section.wrapper .content .solveQuiz .question input {
+    margin-top: 30px;
+}
+section.wrapper .content .solveQuiz .question p.title {
+    font-size: 20px;
+    font-weight: 300;
+}
+section.wrapper .content .solveQuiz .question label {
+    
+}
+section.wrapper .content .createActionContainer .in {
+    display: block;
+}
+section.wrapper .content .createActionContainer .createAction form label {
+    margin-bottom: 15px;
+}
+section.wrapper .content .createActionContainer .createAction form input[type="radio"],
+section.wrapper .content .createActionContainer .createAction form input[type="checkbox"] {
+    width: 20px;
+    height: 17px;
+    margin: 14px 0px 0 15px;
+}
+section.wrapper .content .createActionContainer .createAction form input {
+    margin-bottom: 20px;
+}
+section.wrapper .content .createActionContainer .createAction form button[type="submit"] {
+    width: 100%;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+section.wrapper .content .createActionContainer .createAction form button.addAnswer {
+    width: inherit;
+    float: right;
+    font-size: 10px;
+}
+section.wrapper .content .manageQuiz button {
+    font-size: 9px;
+    text-transform: uppercase;
+}
+section.wrapper .content .manageQuiz button a {
+    color: #fff;
+    text-decoration: none;
+}
+section.wrapper .content .manageQuiz .adminButtons {
+    margin-top: 13px;
+    float: right;
+}
+section.wrapper .content .manageQuiz .adminButtons button {
+    margin-right: 20px;
+}
+section.wrapper .content .manageQuiz .adminButtons button:last-child {
+    margin-right: 0;
+}
+
+.slider-selection {
+    background-color: #5cb85c !important;
+    background-image: none !important;
+}
+.slider.slider-horizontal {
+    width: 100% !important;
+    margin-bottom: 20px;
+}
+.slider-handle.min-slider-handle.round {
+    border: 1px solid #4cae4c;
+    background-color: #5cb85c !important;
+    background-image: none;
+}
+
+.highlight {
+    color: #d9534f;
+}
+strong {
+    font-weight: 600;
+}

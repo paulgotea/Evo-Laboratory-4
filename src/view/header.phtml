@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Quiz Maker Online</title>
+
+        <meta charset="utf-8">
+        <meta name="author" content="Paul Gotea">
+        <meta name="description" content="Online Quiz Generator" />
+        <meta name="keywords" content="quiz, generator, quiz generator, online quiz, tests online, create online test" />
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- CSS -->
+        <link href="<?php echo BASE_URL; ?>src/interface/css/style.css" rel="stylesheet">
+        <link href="<?php echo BASE_URL; ?>src/interface/css/bootstrap-slider.css" rel="stylesheet">
+        <link href="<?php echo BASE_URL; ?>src/interface/css/sweetalert.css" rel="stylesheet">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">        
+
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,400,300,600,700,800" rel=stylesheet" type="text/css">
+    </head>
+
+    <header>
+        <nav class="navbar navbar-default <?php if (Framework\Controller::isLogged()) echo 'navbar-dark'; ?> navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Online Quiz Generator</a>
+                </div>
+
+                <div id="navbar" class="navbar-collapse collapse navbar-right text-center">
+                    <ul class="nav navbar-nav">
+                        <?php
+                        if (Framework\Controller::isLogged()) {
+
+                            $textbuilder = '<li><a href="' . BASE_URL . 'index.php?page=home">Home</a></li>';
+                            
+                            if(Framework\Controller::isAdmin() ) {
+                                $textbuilder .= '<li><a href="' . BASE_URL . 'index.php?page=admin">Admin Panel</a></li>';
+                            }
+                            
+                            $textbuilder .= '<li><a href="' . BASE_URL . 'index.php?page=auth&action=logout">Logout</a></li>';
+                        
+                            echo $textbuilder;
+                        } else {
+                            $textbuilder = '
+                                <li><a href="' . BASE_URL . 'index.php?page=auth&action=register">Register</a></li>
+                                <li><a href="' . BASE_URL . 'index.php?page=auth&action=login">Login</a></li>';
+
+                            echo $textbuilder;
+                        }
+                        ?>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>

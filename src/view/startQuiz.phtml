@@ -1,0 +1,63 @@
+<body>
+    <section class="wrapper">
+        <div class="content col-lg-5 col-centered">
+
+            <h1>Focus and solve the Quiz! Good luck!<i class="fa fa-fa-trophy"></i></h1>
+
+            <div class="createActionContainer solveQuiz">
+                <div class="createAction in" id="textAnswerQuestion">
+                    <form data-action="<?php echo BASE_URL; ?>index.php?page=quiz&action=solvequiz" method="post" enctype="multipart/form-data">
+
+                        <?php
+                        $questionCounter = 0;
+                        foreach ($data['questions'] as $question) {
+                            $questionCounter++;
+                            $counter = 0;
+                            $textbuilder = '
+                                <div class="question">
+                                    <p class="title">' . $questionCounter . ') ' . $question->getQuestion() . ' <strong class="highlight showpoints">'.$question->getPoints().' points</strong></p>';
+
+                            switch (get_class($question)) {
+                                case 'model\entity\TextAnswerQuestion':
+                                    $textbuilder .= '<input type="text" class="form-control" name="answer[' . $question->getID() . ']" id="answer" placeholder="Enter Question Answer" />';
+                                    break;
+
+                                default:
+                                    foreach ($question->getAnswer() as $answer) {
+                                        $textbuilder .= '
+                                            <div class="answer clearfix">
+                                                <span>' . $answer . '</span>
+                                                <div class="customCheck">
+                                                    <label for="addQuestion">Choose answer</label>';
+
+                                        if (get_class($question) == 'model\entity\SingleAnswerQuestion') {
+                                            $textbuilder .= '<input id="addQuestion" type="radio" name="answer[' . $question->getID() . ']" value="' . $counter . '" class="btn btn-lg btn-success">';
+                                        } else if (get_class($question) == 'model\entity\MultipleAnswerQuestion') {
+                                            $textbuilder .= '<input id="addQuestion" type="checkbox" name="answer[' . $question->getID() . '][' . $counter . ']" class="btn btn-lg btn-success">';
+                                        }
+
+                                        $textbuilder .= '
+                                                </div>
+                                            </div>';
+
+                                        $counter++;
+                                    }
+                                    break;
+                            }
+
+                            $textbuilder .= '
+                                </div>';
+
+                            echo $textbuilder;
+                        }
+                        ?>
+
+                        <button type="submit" class="btn btn-lg btn-success">Solve Quiz</button>
+                    </form>
+                </div>
+
+            </div>
+    </section>
+</body>
+
+

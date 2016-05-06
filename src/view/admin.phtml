@@ -1,0 +1,128 @@
+<body>
+    <section class="wrapper">
+        <div class="content col-lg-5 col-centered">
+
+            <div class="manageQuiz">
+                <div class="col-lg-6">
+                    <div class="row">
+                        <h1>Manage the content, <strong class="highlight"><?php echo $username; ?></strong></h1>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="adminButtons row">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-lg btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create Question <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" id="createOption" data-create="textAnswerQuestion">Text Answer Question</a></li>
+                                <li><a href="#" id="createOption" data-create="singleAnswerQuestion">Single Answer Question</a></li>
+                                <li><a href="#" id="createOption" data-create="multipleAnswerQuestion">Multiple Answer Question</a></li>
+                            </ul>
+                        </div>
+                        <a href="#" id="createOption" data-create="quiz"><button class="btn btn-lg btn-warning">Create Quiz</button></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="createActionContainer">
+                
+                <div class="createAction in" id="quiz">
+                    <form data-action="<?php echo BASE_URL; ?>index.php?page=admin&action=createquiz" method="post" enctype="multipart/form-data">
+                        <label for="name">Quiz name</label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter Quiz Name" />
+
+                        <label for="name">Quiz description</label>
+                        <input type="text" class="form-control" name="description" id="name" placeholder="Enter Quiz Description" />
+                        
+                        <button type="submit" class="btn btn-lg btn-success">Create Quiz <i class="fa fa-plus"></i></button>
+                    
+                        <div class="quizContainer">
+                            <?php
+                                foreach ($data['questions'] as $question) {
+                                    $textbuilder = '
+                                    <div class="quiz">
+                                        <h2>'.$question->getQuestion().'</h2> 
+                                        <span><strong><i class="fa fa-fa-trophy"></i> '.$question->getPoints().' Points</strong> for this question</span>
+
+                                        <div class="addQuizQuestion">
+                                            <label for="addQuestion">Add question</label>
+                                            <input id="addQuestion" type="checkbox" name="questions[]" value="'.$question->getID().'" class="btn btn-lg btn-success addQuestion">
+                                        </div>
+                                    </div>';
+
+                                    echo $textbuilder;
+                                }
+                            ?>
+                        </div>                        
+                    
+                    </form>               
+                </div>
+
+                <div class="createAction" id="textAnswerQuestion">
+                    <form data-action="<?php echo BASE_URL; ?>index.php?page=admin&action=createquestion&type=text" method="post" enctype="multipart/form-data">
+                        <label for="question">Question</label>
+                        <input type="text" class="form-control" name="question" id="question" placeholder="Enter Question Name" />
+
+                        <label for="answer">Answer</label>
+                        <input type="text" class="form-control" name="answer" id="answer" placeholder="Enter Question Answer" />
+
+                        <label for="points">Points value: <strong class="pointsValue highlight"></strong></label>
+                        <input class="pointsSlider" name="points" data-slider-id="pointsSlider" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="1"/>                                             
+                        
+                        <button type="submit" class="btn btn-lg btn-success">Create Question <i class="fa fa-plus"></i></button>
+                    </form>
+                </div>
+
+                <div class="createAction" id="singleAnswerQuestion">
+                    <form data-action="<?php echo BASE_URL; ?>index.php?page=admin&action=createquestion&type=single" method="post" enctype="multipart/form-data">
+                        <label for="question">Question</label>
+                        <input type="text" class="form-control" name="question" id="question" placeholder="Enter Question Name" />
+
+                        <div class="answers">
+                            <div class="input-group">
+                                <label for="answer">Answer 1</label>
+                                <input type="text" name="answer[]" id="answer" class="form-control" placeholder="Enter Answer Option">
+                                <span class="input-group-btn">
+                                    <input type="radio" name="correctAnswer" value="0" />
+                                </span>
+                            </div>
+                        </div>
+
+                        <label for="points">Points value: <strong class="pointsValue highlight"></strong></label>
+                        <input class="pointsSlider" name="points" data-slider-id="pointsSlider" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="1"/>                        
+                        
+                        <button class="btn btn-lg btn-primary addAnswer">Add answer</button>
+
+                        <button type="submit" class="btn btn-lg btn-success">Create Question <i class="fa fa-plus"></i></button>
+                    </form>
+                </div>   
+
+                <div class="createAction" id="multipleAnswerQuestion">
+                    <form data-action="<?php echo BASE_URL; ?>index.php?page=admin&action=createquestion&type=multiple" method="post" enctype="multipart/form-data">
+                        <label for="question">Question</label>
+                        <input type="text" class="form-control" name="question" id="question" placeholder="Enter Question Name" />
+
+                        <div class="answers">
+                            <div class="input-group">
+                                <label for="answer">Answer 1</label>
+                                <input type="text" name="answer[]" id="answer" class="form-control" placeholder="Enter Answer Option">
+                                <span class="input-group-btn">
+                                    <input type="checkbox" name="correctAnswer[]" value="0" />
+                                </span>
+                            </div>
+                        </div>
+
+                        <label for="points">Points value: <strong class="pointsValue highlight"></strong></label>
+                        <input class="pointsSlider" name="points" data-slider-id="pointsSlider" type="text" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="1"/>                        
+                        
+                        <button class="btn btn-lg btn-primary addAnswer">Add answer</button>
+
+                        <button type="submit" class="btn btn-lg btn-success">Create Question <i class="fa fa-plus"></i></button>
+                    </form>
+                </div>     
+            </div>
+    </section>
+</body>
+
+

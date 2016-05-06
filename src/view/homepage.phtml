@@ -1,0 +1,30 @@
+<body>
+    <section class="wrapper">
+        <div class="content col-lg-5 col-centered">
+
+            <div class="manageQuiz">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <h1>Welcome to homepage, <strong class="highlight"><?php echo $username; ?></strong></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="quizContainer">
+                <?php
+                    foreach ($data['quizzes'] as $quiz) {
+                        $textbuilder = '
+                        <div class="quiz">
+                            <h2>'.$quiz->getName().'</h2>
+                            <p>'.$quiz->getDescription().'</p>
+                            <span><strong><i class="fa fa-question-circle"></i> '.$quiz->getQuestionNumber().' questions</strong> on this quiz</span>
+                            <a href="'.BASE_URL.'/index.php?page=quiz&action=startquiz&id='.$quiz->getID().'"><button type="submit" class="btn btn-lg btn-success">Take quiz <i class="fa fa-paper-plane"></i></button></a>
+                        </div>';
+
+                        echo $textbuilder;
+                    }
+                ?>                                
+            </div>  
+    </section>
+</body>
